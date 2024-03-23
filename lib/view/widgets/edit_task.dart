@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:todo_app_flutter/main.dart';
 import 'package:todo_app_flutter/models/todo_model.dart';
+import 'package:todo_app_flutter/view/home.dart';
 import 'package:todo_app_flutter/viewmodel/getx_controller.dart';
 
 class EditTodoPage extends StatefulWidget {
