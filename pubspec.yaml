@@ -44,7 +44,7 @@ dev_dependencies:
 
 
 flutter_native_splash:
-  color: "#071b5d"
+  color: "#333333"
   image: assets/images/ic_launcher.png
   android: true
   ios: true

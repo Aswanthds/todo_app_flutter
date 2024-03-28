@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:todo_app_flutter/view/widgets/textformfieldcolumn.dart';
 import 'package:todo_app_flutter/viewmodel/getx_controller.dart';
 
 class AddTaskPage extends StatefulWidget {
@@ -26,6 +26,23 @@ class _AddTaskPageState extends State<AddTaskPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Task'),
+        leading: IconButton(
+            onPressed: () {
+              if (_titleController.text.isEmpty ||
+                  _descriptionController.text.isEmpty) {
+              Get.back();
+              }
+                Get.showSnackbar( GetSnackBar(
+                backgroundColor: Colors.redAccent,
+                duration: const Duration(seconds: 2),
+                borderRadius: 15,
+               
+                snackPosition: SnackPosition.TOP,
+                messageText: Text("Save your task before navigating",style: Theme.of(context).textTheme.titleLarge,),
+              ));
+              
+            },
+            icon: const Icon(Icons.arrow_back_ios)),
         actions: [
           IconButton(
               onPressed: () {
@@ -40,52 +57,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            TextField(
-              controller: _titleController,
-              maxLength: 25,
-              decoration: InputDecoration(
-                hintText: 'Task Title',
-                focusedBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
-            const SizedBox(height: 15.0),
-            Container(
-              height: MediaQuery.of(context).size.width + 80,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                border: Border.fromBorderSide(BorderSide(
-                    style: BorderStyle.solid, color: Colors.white30)),
-              ),
-              child: TextField(
-                controller: _descriptionController,
-                maxLines: null,
-                decoration: const InputDecoration(
-                  hintText: '',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  contentPadding: EdgeInsets.all(15.0),
-                ),
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.grey[600],
-                ),
-                maxLength: null,
-                maxLengthEnforcement:
-                    MaxLengthEnforcement.truncateAfterCompositionEnds,
-                textInputAction: TextInputAction.newline,
-              ),
-            ),
-          ],
-        ),
+        child: TexFieldColumnWidget(titleController: _titleController, descriptionController: _descriptionController),
       ),
     );
   }

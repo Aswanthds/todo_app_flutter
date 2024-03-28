@@ -18,7 +18,7 @@ class TodoPageScreen extends StatelessWidget {
       child: Scaffold(
         body: Obx(() {
           if (controller.incompleteTasks.isEmpty) {
-            return const Center(child: Text(' No Tasks to done'));
+            return const Center(child: Text('No Tasks to done'));
           }
           return ListView.builder(
               itemCount: controller.incompleteTasks.length,

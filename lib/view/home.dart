@@ -29,10 +29,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       bottomSheet: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: TabBar(
             controller: _tabController,
+            
             labelColor: Colors.green,
             tabAlignment: TabAlignment.fill,
             indicatorColor: Colors.green,
@@ -63,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ]),
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "To Do App",
           style: Theme.of(context)

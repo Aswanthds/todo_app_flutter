@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app_flutter/models/todo_model.dart';
+import 'package:todo_app_flutter/view/home.dart';
 import 'package:todo_app_flutter/view/widgets/preview.dart';
 import 'package:todo_app_flutter/viewmodel/getx_controller.dart';
 
@@ -14,7 +15,7 @@ class MySearchDelegate extends SearchDelegate {
         icon: const Icon(Icons.close),
         onPressed: () {
           query = '';
-          close(context, null);
+          Get.offAll(() => const MyHomePage());
         },
       ),
     ];
@@ -25,7 +26,7 @@ class MySearchDelegate extends SearchDelegate {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
       onPressed: () {
-        close(context, null);
+        Get.offAll(() => const MyHomePage());
       },
     );
   }
